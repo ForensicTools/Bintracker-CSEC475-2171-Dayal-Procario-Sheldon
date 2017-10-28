@@ -1,0 +1,16 @@
+# this is a general list of things we might want to include in our project.
+# this is NOT a formal outline, some of these ideas may be scrapped at a later date
+# Use this to come up with various ideas for our project.
+
+-look at cuckoo sandbox and how we might integrate with the bro tool to identify compiled binaries
+-basically make an open-source version of a Fireye box
+
+-Hash the extracted file, determine if benign (do nothing) or malicious (block).
+-Send directory to spin up cuckoo instance, detonate file and interrogate network traffic
+-File executation behavious
+
+
+##TODO##
+-Figure out what we're going to visualize (malicious files, benign, etc.)
+-How we're going to program this (python back-end?)
+-We should probably sit down at some point and get all of this done
