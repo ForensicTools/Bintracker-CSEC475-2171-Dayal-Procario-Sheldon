@@ -14,3 +14,23 @@
 -Figure out what we're going to visualize (malicious files, benign, etc.)
 -How we're going to program this (python back-end?)
 -We should probably sit down at some point and get all of this done
+
+
+Cuckoo:
+https://github.com/cuckoosandbox/cuckoo
+https://cuckoosandbox.org/
+https://cuckoosandbox.org/assets/documents/US-13-Bremer-Mo-Malware-Mo-Problems-Cuckoo-Sandbox-Slides.pdf
+
+Chris is going to figure out how cuckoo works in order to automate analysis of the hashed binaries passed on from Bro. As an alternative, we could always use VirusTotal's public API keys to automate some kind of check against that as well, but Cuckoo should be able to do all of that for us, plus more. Seems very versatile. Chris is going to play around with this tool and figure out some kind of way to automate the check process in cuckoo. 
+
+Cuckoo will
+-Pull task
+-Prep analysis
+-Instrument the guest
+-Execute and log
+-Process and report
+
+I guess we'll want the process/report outputted from our tool.
+
+Some things to ponder:
+-Are we literally using Cuckoo on the back-end, or will we simulate it?
