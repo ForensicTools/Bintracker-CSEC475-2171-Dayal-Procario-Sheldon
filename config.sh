@@ -44,10 +44,9 @@ function installbro
 function main
 {
     echo -e "${green}[*]Configuring BRO IDS${nc}"
-    $(dependencies)
-    $(downloadbro)
-    $(installbro)
-
+    dependencies
+    downloadbro
+    installbro
 }
 
 main
