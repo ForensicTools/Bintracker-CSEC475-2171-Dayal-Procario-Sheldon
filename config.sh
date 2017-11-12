@@ -9,7 +9,7 @@ function dependencies
 {
     echo -e "${green}[*] Installing required dependencies${nc}"
     apt-get install bison CMake flex g++ gdb make libmagic-dev libpcap-dev libgeoip-dev libssl-dev python-dev swig2.0 zlib1g-dev
-    if [( $? > 0)]
+    if [$? > 0]
     then
         echo -e "${red}[!!] Could not install dependencies${nc}"
         exit
@@ -23,7 +23,7 @@ function downloadbro
     cd ~
     echo -e "${green}[*] Cloning BRO IDS${nc}"
     git clone --recursive git://git.bro.org/bro
-    if [( $? > 0)]
+    if [$? > 0]
     then
         echo -e "${red}[!!] Could not clone BRO${nc}"
         exit
