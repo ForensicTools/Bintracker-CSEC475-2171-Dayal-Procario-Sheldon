@@ -1,5 +1,6 @@
 #!/bin/bash
 #config script for bro and cuckoo
+#run apt-get update before running
 
 red='\033[0;31m'
 green='\033[0;32m'
