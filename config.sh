@@ -22,7 +22,7 @@ function downloadbro
 {
     cd ~
     echo -e "${green}[*] Cloning BRO IDS${nc}"
-    git clone --reverse git://git.bro.org/bro
+    git clone --recursive git://git.bro.org/bro
     if ( $? > 0)
     then
         echo -e "${red}[!!] Could not clone BRO${nc}"
