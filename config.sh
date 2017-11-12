@@ -8,7 +8,7 @@ nc='\033[0m'
 function dependencies
 {
     echo -e "${green}[*] Installing required dependencies${nc}"
-    apt-get install bison cmake flex g++ gdb make libmagic-dev libpcap-dev libgeoip-dev libssl-dev python-dev swig2.0 zlib1g-dev
+    apt-get install bison CMake flex g++ gdb make libmagic-dev libpcap-dev libgeoip-dev libssl-dev python-dev swig2.0 zlib1g-dev
     if [( $? > 0)]
     then
         echo -e "${red}[!!] Could not install dependencies${nc}"
@@ -36,7 +36,9 @@ function downloadbro
 function installbro
 {
     cd bro
-    ./configure && make && make install
+    ./configure
+    make
+    make install
 
 }
 
