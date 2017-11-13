@@ -11,6 +11,7 @@ function dependencies
 {
     echo -e "${green}[*] Installing required dependencies${nc}"
     apt-get install bison CMake flex g++ gdb make libmagic-dev libpcap-dev libgeoip-dev libssl-dev python-dev swig zlib1g-dev
+
     if [$? > 0]
     then
         echo -e "${red}[!!] Could not install dependencies${nc}"
@@ -51,6 +52,7 @@ function configurebro
     echo -e "${green}[*]Configuring BRO globally${nc}"
     echo "export PATH=$PATH:/usr/local/bro/bin" > /etc/profile.d/3rd-party.sh
     source /etc/profile.d/3rd-party.sh
+
 }
 
 
@@ -63,8 +65,8 @@ function main
     downloadbro
     installbro
     echo -e "${green}[+]Bro configured${nc}"
-
-    export PATH=$PATH:$cwd
+    cd ~
+    cd "$(dirname "$0")"
     ./cuckoo.sh
 
 }
