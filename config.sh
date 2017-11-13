@@ -40,8 +40,18 @@ function installbro
     ./configure
     make
     make install
+    configurebro
 
 }
+
+function configurebro
+{
+
+    echo -e "${green}[*]Configuring BRO globally${nc}"
+    echo "export PATH=$PATH:/usr/local/bro/bin" > /etc/profile.d/3rd-party.sh
+    source /etc/profile.d/3rd-party.sh
+}
+
 
 
 function main
@@ -50,6 +60,15 @@ function main
     dependencies
     downloadbro
     installbro
+    echo -e "${greem}[+]Bro configured"
+
+    ./cuckoo.sh
+
+
+    echo -e "${green}[*]Deploying BRO${nc}"
+    /usr/local/bro/bin/broctl deploy
+
+
 }
 
 main
