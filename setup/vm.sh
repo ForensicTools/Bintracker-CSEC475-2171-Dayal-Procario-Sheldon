@@ -25,7 +25,7 @@ VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 0 --devi
 
 download
 
-VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium /srv/vms/cuckoo1.iso
+VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium /srv/isos/cuckoo1.iso
 echo -e  "${green}[*]Running Windows VM${nc}"
 VBoxManage modifyvm "cuckoo1" --vrde on
 if [$?>0]
