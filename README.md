@@ -24,4 +24,5 @@ POSSIBLE ERRORS/FIXES
 
 1) sudo apt-get update : make sure to update apt before installing
 2) "unable to locate package CMake" :  change line 12 'CMake' to 'cmake' (lowercase)
+3) "./cuckoo.sh: No such file or directory" : cd into setup directory and manually run "sudo ./cuckoo.sh" 
 
