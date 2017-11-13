@@ -6,12 +6,19 @@ This tool scans binaries and executables for beacons/backdoors. It uses Bro to e
 
 INSTALLATION 
 ------------
+Make sure you run the script as sudo. 
 
     sudo apt-get update
     
    
     cd setup
     sudo ./config.sh
+    
+    
+    
+This will install bro and cuckoo with all dependencies
+
+
 
 
 
