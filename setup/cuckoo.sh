@@ -12,7 +12,7 @@ function dependencies
 {
     echo -e "${green}[*]Installing cuckoo dependencies${nc}"
     apt-get install git python python-pip python-dev libffi-dev libssl-dev python-virtualenv python-setuptools libjpeg-dev zlib1g-dev swig mongodb postgresql libpq-dev qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils python-libvirt
-    apt-get install python python-sqlalchemy python-bson python-dpkt python-jinja2 python-magic python-pymongo python-gridfs python-libvirt python-bottle python-pefile bridge-utils python-pyrex
+    apt-get install python python-pip python-dev python-sqlalchemy python-bson python-dpkt python-jinja2 python-magic python-pymongo python-gridfs python-libvirt python-bottle python-pefile bridge-utils python-pyrex
     pip install jinja2 pymongo bottle pefile cybox maec django chardet
 
     apt-get install tcpdump apparmor-utils
@@ -77,7 +77,8 @@ function install
 {
     adduser cuckoo
     usermod -G vboxusers cuckoo
-    gitclone git://github.com/cuckoo.cuckoo.git
+    pip install -U pip setuptools
+    pip install -U cuckoo
 }
 
 function cuckoo_config
