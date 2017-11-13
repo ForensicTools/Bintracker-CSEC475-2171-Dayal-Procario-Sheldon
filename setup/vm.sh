@@ -4,9 +4,6 @@ red='\033[0;31m'
 green='\033[0;32m'
 nc='\033[0m'
 
-cd ~/Downloads
-echo -e "${green}[*]Downloading Windows XP ISO${nc}"
-wget -o windowscuckoo.iso http://pcriver1.com/download/pcriver.com_Windows_XP_Pro_SP3_32_bit.iso
 
 if [$?>0]
 then
@@ -25,8 +22,11 @@ VBoxManage createhd --filename /srv/vms/windowscuckoo.vdi --size 10000
 VBoxManage storagectl "Windowscuckoo" --name "IDE Controller" --add ide
 VBoxManage storageattach "Windowscuckoo" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium /srv/vms/windowscuckoo.vd1
 
+echo -e "${green}[*]Downloading Windows XP ISO${nc}"
+wget -o /srv/isos/windowscuckoo.iso http://pcriver1.com/download/pcriver.com_Windows_XP_Pro_SP3_32_bit.iso
 
-VBoxManage storageattach "Windowscuckoo" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium ~/Downloads/windowscuckoo.iso
+
+VBoxManage storageattach "Windowscuckoo" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium /srv/vms/windowscuckoo.iso
 echo -e  "${green}[*]Running Windows VM${nc}"
 VBoxManage modifyvm "Windowscuckoo" --vrde on
 if [$?>0]
