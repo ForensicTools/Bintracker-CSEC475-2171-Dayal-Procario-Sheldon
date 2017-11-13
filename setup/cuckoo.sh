@@ -59,7 +59,7 @@ function main
     vbox
     user_add
     install
-    echo -e "${green}[+]Cuckoo installed"
+    echo -e "${green}[+]Cuckoo installed${nc}"
 }
 
 main
