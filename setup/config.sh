@@ -64,11 +64,6 @@ function main
 
     ./cuckoo.sh
 
-
-    echo -e "${green}[*]Deploying BRO${nc}"
-    /usr/local/bro/bin/broctl deploy
-
-
 }
 
 main
