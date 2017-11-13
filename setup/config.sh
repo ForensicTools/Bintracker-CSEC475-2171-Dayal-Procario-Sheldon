@@ -56,15 +56,6 @@ function configurebro
 
 function main
 {
-    echo -e "${green}[*]Performing apt-get update${nc}"
-    apt-get update
-    if [$? >0]
-    then
-        echo -e "[+]apt-get update : ${green}Successful${nc}"
-    else
-        echo -e "[!!]apt-get update : ${red}Failed${nc}"
-        exit 1
-    fi
 
     echo -e "${green}[*]Configuring BRO IDS${nc}"
     dependencies
