@@ -56,6 +56,9 @@ function configurebro
 
 function main
 {
+    echo -e "${green}[*]Performing apt-get update${nc}"
+    apt-get update
+    echo -e "[+]apt-get update : ${green}Successful${nc}"
     echo -e "${green}[*]Configuring BRO IDS${nc}"
     dependencies
     downloadbro
