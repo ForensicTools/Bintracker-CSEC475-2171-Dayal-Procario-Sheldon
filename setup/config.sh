@@ -62,7 +62,7 @@ function main
     then
         echo -e "[+]apt-get update : ${green}Successful${nc}"
     else
-        echo -e "[!!]apt-get update : ${red}Faield${nc}"
+        echo -e "[!!]apt-get update : ${red}Failed${nc}"
         exit 1
     fi
 
