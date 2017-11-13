@@ -7,7 +7,10 @@ This tool scans binaries and executables for beacons/backdoors. It uses Bro to e
 INSTALLATION 
 ------------
 
-    sudo apt-get update 
+    sudo apt-get update
+    
+   
+    cd setup
     sudo ./config.sh
 
 
