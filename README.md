@@ -18,6 +18,9 @@ Make sure you run the script as sudo.
     
 This will install bro and cuckoo with all dependencies
 
+While installing cukoo it will add a new user on the box. It will ask for a password and information 
+about the user. 
+
 
 POSSIBLE ERRORS/FIXES
 ---------------------
