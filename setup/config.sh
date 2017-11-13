@@ -59,6 +59,7 @@ function main
     echo -e "${green}[*]Performing apt-get update${nc}"
     apt-get update
     if [$? >0]
+    then
         echo -e "[+]apt-get update : ${green}Successful${nc}"
     else
         echo -e "[!!]apt-get update : ${red}Faield${nc}"
