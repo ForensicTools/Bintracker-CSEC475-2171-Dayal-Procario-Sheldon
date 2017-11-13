@@ -19,6 +19,9 @@ Make sure you run the script as sudo.
 This will install bro and cuckoo with all dependencies
 
 
+POSSIBLE ERRORS/FIXES
+---------------------
 
-
+1) sudo apt-get update : make sure to update apt before installing
+2) "unable to locate package CMake" :  change line 12 'CMake' to 'cmake' (lowercase)
 
