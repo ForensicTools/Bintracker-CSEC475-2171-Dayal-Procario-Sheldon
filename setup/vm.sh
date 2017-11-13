@@ -21,7 +21,7 @@ VBoxManage modifyvm "cuckoo1" --ostype WindowsXP
 mkdir /srv/vms
 VBoxManage createhd --filename /srv/vms/cuckoo1.vdi --size 10000
 VBoxManage storagectl "cuckoo1" --name "IDE Controller" --add ide
-VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium /srv/vms/cuckoo1.vd1
+VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium /srv/vms/cuckoo1.vdi
 
 download
 
