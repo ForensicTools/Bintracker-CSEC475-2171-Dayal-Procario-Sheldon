@@ -6,6 +6,7 @@ red='\033[0;31m'
 green='\033[0;32m'
 nc='\033[0m'
 
+
 function dependencies
 {
     echo -e "${green}[*] Installing required dependencies${nc}"
@@ -56,13 +57,14 @@ function configurebro
 
 function main
 {
-
+    cwd=$(pwd)
     echo -e "${green}[*]Configuring BRO IDS${nc}"
     dependencies
     downloadbro
     installbro
-    echo -e "${greem}[+]Bro configured"
+    echo -e "${green}[+]Bro configured${nc}"
 
+    export PATH=$PATH:$cwd
     ./cuckoo.sh
 
 }
