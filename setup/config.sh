@@ -58,7 +58,13 @@ function main
 {
     echo -e "${green}[*]Performing apt-get update${nc}"
     apt-get update
-    echo -e "[+]apt-get update : ${green}Successful${nc}"
+    if [$? >0]
+        echo -e "[+]apt-get update : ${green}Successful${nc}"
+    else
+        echo -e "[!!]apt-get update : ${red}Faield${nc}"
+        exit 1
+    fi
+
     echo -e "${green}[*]Configuring BRO IDS${nc}"
     dependencies
     downloadbro
