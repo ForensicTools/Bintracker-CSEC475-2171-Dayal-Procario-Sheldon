@@ -28,6 +28,8 @@ download
 VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium /srv/isos/cuckoo1.iso
 echo -e  "${green}[*]Running Windows VM${nc}"
 VBoxManage modifyvm "cuckoo1" --vrde on
+VBoxHeadless --startvm "cuckoo1"
+
 if [$?>0]
 then
     echo -e "${red}[!]VM FAILED${nc}"
