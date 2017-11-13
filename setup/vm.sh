@@ -8,7 +8,7 @@ function download
 {
     mkdir /srv/isos
     echo -e "${green}[*]Downloading Windows XP ISO${nc}"
-    wget -o /srv/isos/cuckoo1.iso http://pcriver1.com/download/pcriver.com_Windows_XP_Pro_SP3_32_bit.iso
+    wget http://pcriver1.com/download/pcriver.com_Windows_XP_Pro_SP3_32_bit.iso
 
 }
 
@@ -25,7 +25,8 @@ VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 0 --devi
 
 download
 
-VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium /srv/isos/cuckoo1.iso
+VBoxManage storageattach "cuckoo1" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium pcdriver.com_Windows_XP_Pro_SP3_32_bit.iso
+
 echo -e  "${green}[*]Setting up Windows VM${nc}"
 VBoxManage modifyvm "cuckoo1" --vrde on
 echo -e "[+]Run command to start vm:${green}VBoxHeadless --startvm 'cuckoo1'${nc}"
