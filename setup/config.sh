@@ -65,10 +65,6 @@ function main
     downloadbro
     installbro
     echo -e "${green}[+]Bro configured${nc}"
-    cd ~
-    cd "$(dirname "$0")"
-    ./cuckoo.sh
-
 }
 
 main
