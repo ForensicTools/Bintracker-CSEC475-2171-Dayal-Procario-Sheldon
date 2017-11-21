@@ -1,6 +1,11 @@
 import json
+import datetime
 
-with open('./results/2017-11-15-result.json') as json_data:
+time = datetime.datetime.now()
+file_dir = './results/'
+filename = file_dir + str(time.year) + '-' +  str(time.month) + '-' + str(time.day) + '-result.txt'
+
+with open(filename) as json_data:
 	result = json.load(json_data)
 
 if result['positives'] ==  0:

@@ -30,7 +30,9 @@ else:
 
 
 #create a virustotal API request
-params = {'apikey': '<your api key>', 'resource': '/home/pastrami/Desktop/bro_project/hashes.csv'}
+api_key = sys.argv[1]
+
+params = {'apikey': api_key, 'resource': '/home/pastrami/Desktop/bro_project/hashes.csv'}
 headers = {
 	"Accept-Encoding": "gzip, deflate",
 	"User-Agent" : "gzip,  My Python requests library example client or username"
