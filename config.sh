@@ -27,7 +27,7 @@ function dependencies{
 function downloadbro{
 	echo -e "${green}[*] Cloning BRO IDS${nc}"
 	git clone --recursive git://git.bro.org/bro
-    
+
 	if [$? > 0]
 		then
 		echo -e "${red}[!!] Could not clone BRO${nc}"
@@ -65,7 +65,7 @@ function main{
 
 # Check to make sure user is running as root - this is required!
 if [[ $EUID -ne 0 ]]; then
-	echo "This script must be run as root" 
+	echo -e "${red}This script must be run as root${nc}"
 	exit 1
 fi
 
