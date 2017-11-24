@@ -29,6 +29,6 @@ USAGE
 
     python bintracker.py
 
-You will be greated with a command shell. 
+You will be greeted with a command shell. 
 
 
