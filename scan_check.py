@@ -3,33 +3,61 @@ import json
 import datetime
 import os
 import sys
+import csv
 
 #Set user's API key
 api_key = sys.argv[1]
+#create a linked list with new result virus count for CSV
+all = []
 
-#Set parameters to query the VirusTotal API
-params = {'apikey': api_key, 'resource': 'ff0b1f7acd32ecbbee828eb30cdee352c1a3884e707c083a5fcdcf3147964a94-1510768272'}
+print "Gathering Results\n"
+
+with open('bintracker_results.csv', 'r') as csvFile:
+	
+	csvReader = csv.reader(csvFile)
+	for row in csvReader:
+		scan_id = row[2]
+		result_count = 0
+		if scan_id != "NULL":
+			#Set parameters to query the VirusTotal API
+			params = {'apikey': api_key, 'resource': scan_id}
 
 
-headers = {
-"Accept-Encoding": "gzip, deflate",
-"User-Agent" : "gzip,  My Python requests library example client or username"
-}
+			headers = {
+			"Accept-Encoding": "gzip, deflate",
+			"User-Agent" : "gzip,  My Python requests library example client or username"
+			}
 
-#Get the response from VirusTotal
-response = requests.get('https://www.virustotal.com/vtapi/v2/file/report',params=params, headers=headers)
-json_response = response.json()
+			#Get the response from VirusTotal
+			response = requests.get('https://www.virustotal.com/vtapi/v2/file/report',params=params, headers=headers)
+			
+			if response.status_code == 200:
+				result = response.json()
+				if 'positives' in result:
+					
+					#counter for virus reslts	
+					if result['positives'] > 0:
+			
+						for key,value in result['scans'].items():
+							scanner_results = value
+							scanner_detected = scanner_results['detected']
+							result = result + scanner_detected
+				
+							row.append(result_count)
+							all.append(row)
+					else:
+						row.append(result_count)
+						all.append(row)
+				else:
+					row.append(result_count)
+					all.append(row)
+			else:
+				row.append(result_count)
+				all.append(row)
+		else:
+			row.append(result_count)
+			all.append(row)
 
-#Create a unique file with the date at runtime
-time = datetime.datetime.now()
-file_dir = './results/'
-filename = file_dir + str(time.year) + '-' +  str(time.month) + '-' + str(time.day) + '-result.txt'
-
-#Create directory if it doesn't exists
-if not os.path.exists(file_dir):
-    os.makedirs(file_dir)
-
-#Open the file created, put json results inside
-with open(filename, 'w') as result:
-	json.dump(json_response, result)
-
+with open('bintracker_results.csv', 'w') as csvOutput:
+	csvWriter = csv.writer(csvOutput, lineterminator='\n')
+	csvWriter.writerows(all)

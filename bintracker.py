@@ -5,12 +5,11 @@ import os
 
 ascii="""\
 
-____________________________________________________________________________________________________________________
-    ____          __      _     _    ______      ____         __          __         _    _      _____        ____
-    /   )         /       /|   /       /         /    )       / |       /    )       /  ,'       /    '       /    )
----/__ /---------/-------/-| -/-------/---------/___ /-------/__|------/------------/_.'--------/__----------/___ /-
-  /    )        /       /  | /       /         /    |       /   |     /            /  \        /            /    |
-_/____/______ _/_ _____/___|/_______/_________/_____|______/____|____(____/_______/____\______/____ _______/_____|__
+    ____  _____   ____________  ___   ________ __ __________
+   / __ )/  _/ | / /_  __/ __ \/   | / ____/ //_// ____/ __ \
+  / __  |/ //  |/ / / / / /_/ / /| |/ /   / ,<  / __/ / /_/ /
+ / /_/ _/ // /|  / / / / _, _/ ___ / /___/ /| |/ /___/ _, _/
+/_____/___/_/ |_/ /_/ /_/ |_/_/  |_\____/_/ |_/_____/_/ |_|
 
 """
 
@@ -28,6 +27,7 @@ class Bintracker(Cmd):
             print "USAGE: read <pcap file>"
         else:
             pcap = args
+            print "\nExtracting files from %s\n" % pcap
             command = 'bro -r '+pcap+' extract_all.bro'
             os.system(command)
 
@@ -36,11 +36,10 @@ class Bintracker(Cmd):
         if len(args)==0:
             print "USAGE: verify <api_key>"
         else:
-            self.api_key = args
-            os.system("python md5-ify.py"+api_key)
-            os.system("python scan_check.py"+api_key)
-            os.system("python json_handler.py")
-
+            api_key = args
+            os.system("python md5-ify.py %s" %  api_key)
+            os.system("python scan_check.py %s" % api_key)
+            os.system("python print_results.py")
 
 if __name__ == '__main__':
     prompt = Bintracker()
@@ -51,7 +50,7 @@ if __name__ == '__main__':
             1) extract <pcap file> : extracts files from pcap file
             2) verify <api_key> : verify file hashes using virustotal api
             3) help
-
+            4) quit
     """
     prompt.cmdloop(ascii+prompt.intro)
 
