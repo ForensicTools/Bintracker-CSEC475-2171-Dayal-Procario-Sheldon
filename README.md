@@ -21,7 +21,7 @@ POSSIBLE ERRORS/FIXES
 ---------------------
 
 1) sudo apt-get update : make sure to update apt before installing
-2) "unable to locate package CMake" :  change line 12 'CMake' to 'cmake' (lowercase)
+2) "unable to locate package CMake" :  change line 12 'CMake' to 'cmake'
 
 
 USAGE
