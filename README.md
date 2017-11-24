@@ -13,7 +13,7 @@ Make sure you run the script as sudo.
     sudo ./config.sh 
     
     
-This will install bro with all dependencies.
+This will install bro with all dependencies.(This may take a while)
 
 Virustotal: your API-KEY is requried to perform virustotal checks.
 

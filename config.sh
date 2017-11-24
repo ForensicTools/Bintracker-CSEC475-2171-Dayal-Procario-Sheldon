@@ -10,7 +10,7 @@ green='\033[0;32m'
 nc='\033[0m'
 
 # dependencies installs the required Bro dependencies
-function dependencies{
+function dependencies(){
 	echo -e "${green}[*] Installing required dependencies${nc}"
 	apt-get install bison cmake flex g++ gdb make libmagic-dev libpcap-dev libgeoip-dev libssl-dev python-dev swig zlib1g-dev
 
@@ -24,7 +24,7 @@ function dependencies{
 }
 
 # downloadbro clones Bro from github to then be installed by the installbro function
-function downloadbro{
+function downloadbro(){
 	echo -e "${green}[*] Cloning BRO IDS${nc}"
 	git clone --recursive git://git.bro.org/bro
 
@@ -38,7 +38,7 @@ function downloadbro{
 }
 
 # installbro installs necessary files for bro in the bro directory
-function installbro{
+function installbro(){
 	cd bro
 	./configure
 	make
@@ -47,14 +47,14 @@ function installbro{
 }
 
 # configurebro configures Bro globally
-function configurebro{
+function configurebro(){
 	echo -e "${green}[*]Configuring BRO globally${nc}"
 	echo "export PATH=$PATH:/usr/local/bro/bin" > /etc/profile.d/3rd-party.sh
 	source /etc/profile.d/3rd-party.sh
 }
 
 # main will call other functions after establishing the current directory
-function main{
+function main(){
 	cwd=$(pwd)
 	echo -e "${green}[*]Configuring BRO IDS${nc}"
 	dependencies
