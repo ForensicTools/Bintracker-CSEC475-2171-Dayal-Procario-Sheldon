@@ -60,6 +60,7 @@ function main(){
 	dependencies
 	downloadbro
 	installbro
+    configurebro
 	echo -e "${green}[+]Bro configured${nc}"
 }
 
