@@ -1,3 +1,14 @@
+######
+# md5-ify.py
+#
+# this script replies on the bintracker.py shell
+# this script takes the files extracted from Bro, and 
+# gets the MD5 hash of the CONTENT of the file, not the filename
+# and pushes it to VirusTotal.
+#
+# the filename, hash, and scan_id of the file are then pushed to a CSV file
+######
+
 import os
 import csv
 from os import listdir
@@ -60,13 +71,19 @@ with open('bintracker_results.csv', 'r') as csvInput:
 				"User-Agent" : "gzip,  My Python requests library example client or username"
 			}
 			response = requests.post('https://www.virustotal.com/vtapi/v2/file/rescan',params=params)
+			# if success status code is returned
 			if response.status_code == 200:
 				json_response = response.json()
+				# if a scan_id is returned
 				if 'scan_id' in json_response:
+					# if the scan_id isn't null
 					if json_response['scan_id'] is not None:
+						#put the scan_id in a new column
 						scan_id = json_response['scan_id']
 						row.append(scan_id)
 						all.append(row)
+
+					# otherwise put null in the column
 					else:
 						row.append('NULL')
 						all.append(row)
@@ -76,10 +93,11 @@ with open('bintracker_results.csv', 'r') as csvInput:
 			else:
 				row.append('NULL')
 				all.append(row)	
+
+			#sleep to allow VirusTotal API to accept multiple files
 			time.sleep(2)
 
+# write the CSV 
 with open('bintracker_results.csv', 'w') as csvOutput:
 		csvWriter = csv.writer(csvOutput, lineterminator='\n')	
 		csvWriter.writerows(all)
-#with open('response.txt', 'w') as outfile:
- #   json.dump(json_response, outfile)
