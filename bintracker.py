@@ -56,9 +56,10 @@ if __name__ == '__main__':
 
         COMMANDS:
             1) extract <pcap file> : extracts files from pcap file
-            2) verify <api_key> : verify file hashes using virustotal api
-            3) help
-            4) quit
+            2) push <api-key> :  creates file hashes and sends VT request
+            3) verify <api_key> : verify file hashes (VT response)
+            4) help
+            5) quit
     """
     prompt.cmdloop(ascii+prompt.intro)
 
