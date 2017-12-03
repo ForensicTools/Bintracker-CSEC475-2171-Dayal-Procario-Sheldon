@@ -38,9 +38,16 @@ class Bintracker(Cmd):
             print "USAGE: verify <api_key>"
         else:
             api_key = args
-            os.system("python md5-ify.py %s" %  api_key)
             os.system("python scan_check.py %s" % api_key)
             os.system("python print_results.py")
+    def do_push(self,args):
+        """ creates file hashes"""
+        if len(args)==0:
+            print"USAGE: push <api-key>"
+        else:
+            api_key = args
+            os.system("python md5-ify.py %s" % api_key)
+
 
 if __name__ == '__main__':
     prompt = Bintracker()
