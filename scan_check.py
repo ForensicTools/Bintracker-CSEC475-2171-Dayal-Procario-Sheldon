@@ -52,15 +52,10 @@ with open('bintracker_results.csv', 'r') as csvFile:
 					
 					#counter for virus reslts	
 					if result['positives'] > 0:
-			
-						#count the number of scans
-						for key,value in result['scans'].items():
-							scanner_results = value
-							scanner_detected = scanner_results['detected']
-							result = result + scanner_detected
-				
-							row.append(result_count)
-							all.append(row)
+						
+						result_count = result_count + result['positives']
+						row.append(result_count)
+						all.append(row)
 					else:
 						row.append(result_count)
 						all.append(row)

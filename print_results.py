@@ -6,6 +6,7 @@
 ###### 
 
 import csv
+import sys
 
 # open the CSV to interpret
 with open('bintracker_results.csv', 'r') as inFile:
@@ -17,7 +18,12 @@ with open('bintracker_results.csv', 'r') as inFile:
 		filename = row[0]
 		#get the number of malware detected
 		results = row[3]
-		
-		print 'Filename: {:28s} | Malware: {:6s}'.format(filename,results)
+		if results > 0:
+			sys.stdout.write("\033[1;31m")
+			print 'Filename: {:28s} |  Malware: {:6s}'.format(filename,results)	
+		else:
+			sys.stdout.write("\033[0;0m")
+			print 'Filename: {:28s} |  Malware: {:6s}'.format(filename,results)
 
+sys.stdout.write("\033[0;0m")
 print "\nFor a more in-depth report, check the \"bintracker_results.csv\" file\n"
